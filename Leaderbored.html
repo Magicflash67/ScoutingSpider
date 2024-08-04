@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="/Leaderbored.html">Leaderboard</a>
+        <a href="/Matches.html">Match data viewer</a>
+        <a href="/Team.html">team data viewer</a>
+    </div>
+
+    <h1>Leaderboard</h1>
+    <table id="leaderboard">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Team Number</th>
+                <th>Team Name</th>
+                <th>Total Score</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const csvUrl =' https://magicflash67.github.io/Personal-Website/CSVFileTesting/Testing2024_Northern Lights Regional_Summary'; // Replace with your CSV file URL
+
+            function calculateScore(data) {
+                return parseFloat(data["Speaker Autos"]) + parseFloat(data["Auto Moved"]) +
+                       parseFloat(data["Amp Teleop"]) + parseFloat(data["Speaker Teleop"]);
+            }
+
+            function getParkingScore(parkingType) {
+                const order = ["Failed", "N/A", "Parked", "Hanging", "Harmonized"];
+                return order.indexOf(parkingType.split(" - ")[0]);
+            }
+
+            function processCSVData(data) {
+                const teams = data.map(row => ({
+                    teamNumber: row["Team Number"],
+                    teamName: row["Team Names"],
+                    totalScore: calculateScore(row),
+                    details: row
+                }));
+
+                teams.sort((a, b) => b.totalScore - a.totalScore);
+
+                let rank = 1;
+                teams.forEach(team => {
+                    const row = $(`
+                        <tr>
+                            <td>${rank}</td>
+                            <td>${team.teamNumber}</td>
+                            <td>${team.teamName}</td>
+                            <td>${team.totalScore}</td>
+                        </tr>
+                        <tr class="hidden details">
+                            <td colspan="4">
+                                <pre>${JSON.stringify(team.details, null, 2)}</pre>
+                            </td>
+                        </tr>
+                    `);
+
+                    row.first().click(function() {
+                        $(this).next('.details').toggleClass('hidden');
+                    });
+
+                    $('#leaderboard tbody').append(row);
+                    rank++;
+                });
+            }
+
+            $.get(csvUrl, function(data) {
+                Papa.parse(data, {
+                    header: true,
+                    complete: function(results) {
+                        processCSVData(results.data);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
