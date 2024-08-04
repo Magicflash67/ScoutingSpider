@@ -1,3 +1,5 @@
+'''
+oold flask backend
 from flask import Flask
 app = Flask(__name__)
 
@@ -16,9 +18,4 @@ def loadMatches():
 @app.route('/Team.html')
 def loadTeams():
     return open('Team.html').read()
-
-
-
-if __name__ == '__main__':
-    # Run the Flask app
-    app.run(debug=True)
+    '''
