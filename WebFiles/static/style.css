@@ -28,3 +28,168 @@
         h1 {
             color:rgb(0, 0, 0);
         }
+        
+body {
+    background-color: rgb(19, 19, 19);
+  }
+  h1.Tiltle {
+    font-family: Orbit;; 
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+  h2.Sub {
+    font-family: Orbit;; 
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+  h3.UnderClass {
+    font-family: Orbit; 
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+  div.outline {
+    background-color: rgb(249, 112, 27);
+    width: auto;
+    border: 15px solid rgba(255,128,49);
+    padding: 20px;
+  }
+div.table {
+  background-color: rgb(82, 82, 82);
+  width: auto;
+  border: 15px solid rgba(255,128,49);
+  padding: 20px;
+}
+table, th, td {
+  border:5px solid rgb(255, 255, 255);
+}
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #b4b4b4;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
+  
+  li {
+    float: left;
+    font-family: Orbit; 
+  }
+  
+  li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #000000;
+   color: #ffbf00 ;
+  }
+  
+  .active {
+    background-color: #ffbf00 !important;
+    color: #000000 !important;
+  }
+  footer {
+    text-align: center;
+    padding: 5px;
+    background-color: #000000;
+    color: #ffffff;}
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    
+    th, td {
+      border: 5px solid rgb(255, 255, 255);
+      font: 15px Arial, sans-serif;
+      color: rgb(255, 255, 255);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    td {
+      width: auto;
+    }
+  td.OurGameRed {border:10px solid rgb(255, 0, 0);}
+  td.OurGameBlue {border:10px solid rgb(0, 0, 255);}
+  .label {
+    text-align:right;
+  }
+  .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  .textButton {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: #ffbf00;
+    cursor: pointer;
+    text-decoration: underline; /* Optional, to make it look like a link */
+}
+.textButton:focus {
+    outline: none; /* Remove focus outline */
+}
