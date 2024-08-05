@@ -4,30 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Match Data Viewer</title>
-    <link rel="stylesheet" href="/ScoutingSpider/WebFiles/static/breakdown.css"/> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color :solid rgb(0, 0, 0);
+        }
+        div.outline {
+    background-color: rgb(249, 112, 27);
+    width: auto;
+    border: 15px solid rgba(255,128,49);
+    padding: 20px;
+  }
+        #matchList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #matchList li {
+            cursor: pointer;
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #f0f0f0;
+        }
+        #matchList li:hover {
+            background-color: #ddd;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: rgb(0, 0, 0);
+        }
+        .outline {
+            margin: 20px;
+        }
+        .outline ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .outline ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        .outline ul li a {
+            text-decoration: none;
+            color: blue;
+        }
+        .outline ul li a.active {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="outline">
-        <h1 class="Tiltle">C.O.R.E.2062 SCOUTING WEBSITE</h1> 
-        <h3 class="UnderClass">Community Of Robotics Enginers</h3> 
+        <h1 class="Title">C.O.R.E.2062 SCOUTING WEBSITE</h1>
+        <h3 class="UnderClass">Community Of Robotics Engineers</h3>
         <ul>
-            <li><a href="https://magicflash67.github.io/ScoutingSpider/index.html"; class = "active">HOME </a></li>
-            <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/OurMatches.html">Our Matches</a></li> 
-            <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Leaderbored.html">Leaderboard</a></li> 
-            <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Matches.html">Match data viewer</a></a></li>
-            <li> <a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Team.html">Team data viewer</a></li>` 
+            <li><a href="https://magicflash67.github.io/ScoutingSpider/index.html" class="active">HOME</a></li>
+            <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/OurMatches.html">Our Matches</a></li>
+            <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Leaderbored.html">Leaderboard</a></li>
+            <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Matches.html">Match data viewer</a></li>
+            <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Team.html">Team data viewer</a></li>
         </ul>
-    <h1>Match Data Viewer</h1> 
-    <ul id="matchList"></ul>
-    <table id="matchDataTable" style="display: none;">
-        <thead>
-            <tr></tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+        <h1>Match Data Viewer</h1>
+        <ul id="matchList"></ul>
+        <table id="matchDataTable" style="display: none;">
+            <thead>
+                <tr></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
     <script>
-        const csvUrl = 'https://magicflash67.github.io/Personal-Website/CSVFileTesting/Testing2024_Northern Lights Regional_RawExport'; 
+        const csvUrl = 'https://magicflash67.github.io/Personal-Website/CSVFileTesting/Testing2024_Northern%20Lights%20Regional_RawExport';
 
         fetch(csvUrl)
             .then(response => response.text())
@@ -101,6 +158,5 @@
             table.style.display = 'table';
         }
     </script>
-    </div>
 </body>
 </html>

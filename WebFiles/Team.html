@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Data Viewer</title>
-    <link rel="stylesheet" href="/ScoutingSpider/WebFiles/static/breakdown.css"/> 
+    <link rel="stylesheet" href="/ScoutingSpider/WebFiles/static/breakdown.css"/>
     <style>
         body {
             font-family: Arial, sans-serif;
+        }
+        div.outline {
+            background-color: rgb(249, 112, 27);
+            width: auto;
+            border: 15px solid rgba(255,128,49);
+            padding: 20px;
         }
         #teamList {
             list-style-type: none;
@@ -33,15 +39,36 @@
         th {
             background-color: #f2f2f2;
         }
+        h1 {
+            color: rgb(0, 0, 0);
+        }
+        .outline {
+            margin: 20px;
+        }
+        .outline ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .outline ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        .outline ul li a {
+            text-decoration: none;
+            color: blue;
+        }
+        .outline ul li a.active {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <ul>
-        <li><a href="https://magicflash67.github.io/ScoutingSpider/index.html"; class = "active">HOME </a></li>
+        <li><a href="https://magicflash67.github.io/ScoutingSpider/index.html" class="active">HOME</a></li>
         <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/OurMatches.html">Our Matches</a></li> 
         <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Leaderbored.html">Leaderboard</a></li> 
-        <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Matches.html">Match data viewer</a></a></li>
-        <li> <a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Team.html">Team data viewer</a></li>` 
+        <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Matches.html">Match data viewer</a></li>
+        <li><a href="https://magicflash67.github.io/ScoutingSpider/WebFiles/Team.html">Team data viewer</a></li>
     </ul>
     <h1>Team Data Viewer</h1>
     <ul id="teamList"></ul>
@@ -53,7 +80,7 @@
     </table>
 
     <script>
-        const csvUrl = 'https://magicflash67.github.io/Personal-Website/CSVFileTesting/Testing2024_Northern Lights Regional_RawExport'; 
+        const csvUrl = 'https://magicflash67.github.io/Personal-Website/CSVFileTesting/Testing2024_Northern%20Lights%20Regional_RawExport'; 
 
         fetch(csvUrl)
             .then(response => response.text())
@@ -75,7 +102,7 @@
 
         function getUniqueTeamNumbers(data) {
             const teamNumbers = data.rows.map(row => row[0]);
-            return [...new Set(teamNumbers)];
+            return [...new Set(teamNumbers)].sort((a, b) => parseInt(a) - parseInt(b));
         }
 
         function displayTeamNumbers(teamNumbers) {
